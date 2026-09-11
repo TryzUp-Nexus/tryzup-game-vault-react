@@ -38,4 +38,9 @@ Luego abrir la URL indicada por Vite en el navegador.
 
 ```bash
 npm run build
-```
+
+```## 🌐 Demo en vivo
+
+Puedes visualizar el proyecto desplegado en GitHub Pages:
+
+👉 https://tryzup-nexus.github.io/tryzup-game-vault-react/
