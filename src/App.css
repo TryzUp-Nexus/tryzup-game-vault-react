@@ -1,0 +1,52 @@
+.app-shell {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+}
+.catalog-section {
+  padding: 64px 0 48px;
+}
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  align-items: end;
+  padding: 0 4px;
+}
+.section-kicker {
+  color: var(--cyan);
+  font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.17em;
+}
+.section-heading h2 {
+  margin: 8px 0 0;
+  font-size: clamp(2rem, 4vw, 3.3rem);
+  letter-spacing: -0.04em;
+}
+.section-heading p {
+  max-width: 390px;
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.toast {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 40;
+  padding: 12px 16px;
+  border: 1px solid rgba(84, 225, 255, 0.25);
+  border-radius: 12px;
+  color: #dffbff;
+  background: rgba(8, 15, 22, 0.92);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
+}
+@media (max-width: 640px) {
+  .app-shell {
+    width: min(100% - 20px, 1180px);
+  }
+  .section-heading {
+    align-items: start;
+    flex-direction: column;
+  }
+}
