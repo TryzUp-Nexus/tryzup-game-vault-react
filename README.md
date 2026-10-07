@@ -2,157 +2,106 @@
 
 E-commerce académico de una sola página desarrollado con **React + Vite**, orientado a la venta de colecciones digitales de videojuegos.
 
-El proyecto fue creado para la evaluación **Componentes Custom para E-commerce en React** del Módulo 2 del Diplomado Full Stack.
-
 ## 🎯 Objetivo
 
-Aplicar los principales conceptos revisados en React:
+Aplicar componentes reutilizables, props, renderizado con `map()`, `key`, manejo de estado con `useState`, separación de responsabilidades y organización modular.
 
-- Componentes reutilizables.
-- Uso de props.
-- Renderizado de listas con `map()`.
-- Uso correcto de `key`.
-- Manejo de estado con `useState`.
-- Separación de responsabilidades.
-- Organización del proyecto por componentes.
-- Simulación de datos sin backend.
+## ♻️ Refactorización de arquitectura
 
-## 🧩 Componentes creados
+Después de la revisión académica, el proyecto fue refactorizado para mejorar mantenibilidad y trabajo colaborativo.
 
-El proyecto utiliza componentes funcionales separados dentro de `src/components/`:
+- Cada componente vive en su propia carpeta.
+- Cada componente visual mantiene su propio archivo CSS.
+- Los estilos globales quedaron en `index.css`.
+- Los estilos propios de la aplicación quedaron en `App.css`.
+- `formatPrice` fue extraída a `src/utils/formatPrice.js`.
+- Se mantuvo la misma interfaz y comportamiento funcional.
 
-- `Header`: muestra la identidad de la tienda y recibe `cartCount` mediante props.
-- `Hero`: presentación principal de TryzUp Game Vault.
-- `FilterBar`: permite filtrar las colecciones por categoría.
-- `ProductGrid`: renderiza el listado de productos utilizando `map()`.
-- `ProductCard`: componente reutilizable que recibe los datos de cada colección mediante props.
-- `Benefits`: presenta características principales del proyecto.
-- `Footer`: muestra la información final del e-commerce.
+Detalle del cambio: `docs/architecture-refactor.md`.
 
-## 📦 Simulación de datos
+## 🧩 Componentes
 
-Los productos se encuentran en:
+- `Header`: identidad, navegación y contador del carrito.
+- `Hero`: presentación principal.
+- `FilterBar`: filtros de categorías.
+- `ProductGrid`: renderizado mediante `map()`.
+- `ProductCard`: tarjeta reutilizable con props.
+- `Benefits`: características principales.
+- `Footer`: información final.
+- `Icon`: iconografía SVG reutilizable.
 
-```text
-src/data/collections.js
-```
+## 📦 Datos
 
-Cada producto contiene como mínimo los campos solicitados en la evaluación:
+Los productos se encuentran en `src/data/collections.js` y contienen `id`, `name`, `price`, `category` e `image`, además de datos complementarios.
 
-```js
-{
-  id,
-  name,
-  price,
-  category,
-  image
-}
-```
+## 🧰 Utilidades
 
-Además, se incorporan datos complementarios como plataforma, cantidad de juegos, valoración, etiqueta y descripción.
+`src/utils/formatPrice.js` centraliza el formato de precios CLP y permite reutilizar la función en futuras vistas.
 
-## ⚛️ Conceptos React aplicados
+## 🛠️ Tecnologías
 
-- Componentes funcionales.
-- Props para comunicación padre → hijo.
-- `map()` para renderizar listas.
-- `key={collection.id}` como identificador único.
-- `useState()` para categoría activa, carrito y notificaciones.
-- `useMemo()` para obtener las colecciones visibles según el filtro.
-- Actualización funcional de estado:
+React, JavaScript, Vite, HTML5, CSS3, Node.js/npm, Git, GitHub, GitHub Actions y GitHub Pages.
 
-```js
-setCartCount((previousCount) => previousCount + 1)
-```
-
-## 🛠️ Tecnologías utilizadas
-
-- React
-- JavaScript
-- Vite
-- HTML5
-- CSS3
-- Node.js / npm
-- Git
-- GitHub
-- GitHub Actions
-- GitHub Pages
-
-## 📁 Estructura principal
+## 📁 Estructura
 
 ```text
-tryzup-game-collections/
-├── .github/
-│   └── workflows/
-│       └── deploy.yml
-├── docs/
-│   └── screenshots/
-│       ├── home.png
-│       └── catalogo.png
-├── src/
-│   ├── components/
-│   ├── data/
-│   │   └── collections.js
-│   ├── App.jsx
-│   ├── main.jsx
-│   └── styles.css
-├── .gitignore
-├── index.html
-├── package.json
-├── package-lock.json
-├── vite.config.js
-└── README.md
+src/
+├── components/
+│   ├── Benefits/
+│   │   ├── Benefits.jsx
+│   │   └── Benefits.css
+│   ├── FilterBar/
+│   │   ├── FilterBar.jsx
+│   │   └── FilterBar.css
+│   ├── Footer/
+│   │   ├── Footer.jsx
+│   │   └── Footer.css
+│   ├── Header/
+│   │   ├── Header.jsx
+│   │   └── Header.css
+│   ├── Hero/
+│   │   ├── Hero.jsx
+│   │   └── Hero.css
+│   ├── Icon/
+│   │   └── Icon.jsx
+│   ├── ProductCard/
+│   │   ├── ProductCard.jsx
+│   │   └── ProductCard.css
+│   └── ProductGrid/
+│       ├── ProductGrid.jsx
+│       └── ProductGrid.css
+├── data/
+│   └── collections.js
+├── utils/
+│   └── formatPrice.js
+├── App.jsx
+├── App.css
+├── main.jsx
+└── index.css
 ```
 
-## ▶️ Ejecutar el proyecto
-
-Clonar el repositorio:
+## ▶️ Ejecutar
 
 ```bash
 git clone https://github.com/TryzUp-Nexus/tryzup-game-vault-react.git
-```
-
-Ingresar a la carpeta:
-
-```bash
 cd tryzup-game-vault-react
-```
-
-Instalar dependencias:
-
-```bash
 npm install
-```
-
-Ejecutar el servidor de desarrollo:
-
-```bash
 npm run dev
 ```
 
-Luego abrir en el navegador la dirección local indicada por Vite.
-
-## 🏗️ Build de producción
+## 🏗️ Build
 
 ```bash
 npm run build
 ```
 
-La versión de producción se genera en la carpeta `dist/`.
+## 📸 Capturas
 
-## 📸 Capturas de pantalla
+![Vista principal](docs/screenshots/home.png)
 
-### Vista principal del e-commerce
+![Catálogo](docs/screenshots/catalogo.png)
 
-![Vista principal de TryzUp Game Vault](docs/screenshots/home.png)
-
-### Catálogo de colecciones
-
-![Catálogo de colecciones de TryzUp Game Vault](docs/screenshots/catalogo.png)
-
-## 🌐 Demo en vivo
-
-El proyecto está desplegado mediante GitHub Actions y GitHub Pages:
+## 🌐 Demo
 
 https://tryzup-nexus.github.io/tryzup-game-vault-react/
 

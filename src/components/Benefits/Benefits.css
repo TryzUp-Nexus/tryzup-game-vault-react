@@ -1,0 +1,7 @@
+.benefits { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 38px 0 70px; padding: 20px; border: 1px solid var(--line); border-radius: 22px; background: rgba(13,18,27,.68); }
+.benefits article { display: flex; gap: 13px; padding: 12px; }
+.benefits article > span { flex: 0 0 auto; display: grid; place-items: center; width: 42px; height: 42px; border-radius: 12px; color: var(--cyan); background: rgba(84,225,255,.08); }
+.benefits h3 { margin: 0 0 6px; font-size: .95rem; }
+.benefits p { margin: 0; color: #8894a5; font-size: .8rem; line-height: 1.5; }
+@media (max-width: 920px) { .benefits { grid-template-columns: 1fr; } }
+@media (max-width: 640px) { .benefits { padding: 10px; } }

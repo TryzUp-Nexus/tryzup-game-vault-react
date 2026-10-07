@@ -1,6 +1,8 @@
+import './Footer.css'
+
 export default function Footer() {
   return (
-    <footer>
+    <footer className="site-footer">
       <div>
         <strong>TRYZUP // GAME VAULT</strong>
         <span>Componentes Custom para E-commerce en React</span>

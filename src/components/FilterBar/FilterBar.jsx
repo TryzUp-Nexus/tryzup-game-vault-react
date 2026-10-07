@@ -1,3 +1,5 @@
+import './FilterBar.css'
+
 export default function FilterBar({ categories, activeCategory, onCategoryChange }) {
   return (
     <div className="filter-bar" aria-label="Filtros de colecciones">

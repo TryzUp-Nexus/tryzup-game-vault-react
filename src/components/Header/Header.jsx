@@ -1,4 +1,5 @@
-import Icon from './Icon.jsx'
+import Icon from '../Icon/Icon.jsx'
+import './Header.css'
 
 export default function Header({ cartCount }) {
   return (

@@ -1,4 +1,5 @@
-import Icon from './Icon.jsx'
+import Icon from '../Icon/Icon.jsx'
+import './Benefits.css'
 
 const benefits = [
   { icon: 'layers', title: 'Componentes reutilizables', text: 'Cada sección se construye como una pieza independiente y fácil de mantener.' },

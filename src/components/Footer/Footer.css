@@ -1,0 +1,6 @@
+.site-footer { display: flex; justify-content: space-between; gap: 20px; align-items: center; padding: 26px 4px 36px; border-top: 1px solid var(--line); color: #758196; font-size: .78rem; }
+.site-footer strong, .site-footer span { display: block; }
+.site-footer strong { color: #d8e0ea; font-family: ui-monospace, 'Cascadia Code', Consolas, monospace; letter-spacing: .08em; }
+.site-footer span { margin-top: 5px; }
+.site-footer p { margin: 0; }
+@media (max-width: 640px) { .site-footer { flex-direction: column; align-items: flex-start; } }
