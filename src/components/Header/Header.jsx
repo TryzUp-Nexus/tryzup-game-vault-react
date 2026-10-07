@@ -1,11 +1,17 @@
-import Icon from '../Icon/Icon.jsx'
-import './Header.css'
+import Icon from "../Icon/Icon.jsx";
+import "./Header.css";
 
 export default function Header({ cartCount }) {
   return (
     <header className="site-header">
-      <a className="brand" href="#inicio" aria-label="TryzUp Game Vault - Inicio">
-        <span className="brand-mark"><Icon name="gamepad" size={22} /></span>
+      <a
+        className="brand"
+        href="#inicio"
+        aria-label="TryzUp Game Vault - Inicio"
+      >
+        <span className="brand-mark">
+          <Icon name="gamepad" size={22} />
+        </span>
         <span>
           <strong>TRYZUP</strong>
           <small>GAME VAULT</small>
@@ -17,11 +23,14 @@ export default function Header({ cartCount }) {
         <a href="#ventajas">Beneficios</a>
       </nav>
 
-      <button className="cart-button" aria-label={`Carrito con ${cartCount} productos`}>
+      <button
+        className="cart-button"
+        aria-label={`Carrito con ${cartCount} productos`}
+      >
         <Icon name="bag" size={19} />
         <span>Carrito</span>
         <strong>{cartCount}</strong>
       </button>
     </header>
-  )
+  );
 }
