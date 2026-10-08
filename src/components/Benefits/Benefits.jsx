@@ -4,18 +4,18 @@ import "./Benefits.css";
 const benefits = [
   {
     icon: "layers",
-    title: "Componentes reutilizables",
-    text: "Cada sección se construye como una pieza independiente y fácil de mantener.",
+    title: "API REST",
+    text: "El catálogo se obtiene dinámicamente desde DummyJSON mediante fetch y useEffect.",
   },
   {
-    icon: "boxes",
-    title: "Catálogo escalable",
-    text: "Los productos provienen de un arreglo de datos y se renderizan con map().",
+    icon: "search",
+    title: "Búsqueda controlada",
+    text: "El usuario puede filtrar los productos por nombre desde un input controlado.",
   },
   {
     icon: "shield",
-    title: "Estado controlado",
-    text: "Filtros y carrito usan estado de React sin modificar los datos directamente.",
+    title: "Estados claros",
+    text: "La interfaz informa carga, error y datos sin perder la experiencia visual.",
   },
 ];
 
@@ -27,6 +27,7 @@ export default function Benefits() {
           <span>
             <Icon name={icon} size={22} />
           </span>
+
           <div>
             <h3>{title}</h3>
             <p>{text}</p>

@@ -7,19 +7,20 @@ export default function Header({ cartCount }) {
       <a
         className="brand"
         href="#inicio"
-        aria-label="TryzUp Game Vault - Inicio"
+        aria-label="TryzUp Vault Store - Inicio"
       >
         <span className="brand-mark">
-          <Icon name="gamepad" size={22} />
+          <Icon name="boxes" size={21} />
         </span>
+
         <span>
           <strong>TRYZUP</strong>
-          <small>GAME VAULT</small>
+          <small>VAULT STORE</small>
         </span>
       </a>
 
       <nav className="nav-links" aria-label="Navegación principal">
-        <a href="#colecciones">Colecciones</a>
+        <a href="#colecciones">Productos</a>
         <a href="#ventajas">Beneficios</a>
       </nav>
 
