@@ -1,6 +1,9 @@
-export const formatPrice = (value) =>
-  new Intl.NumberFormat('es-CL', {
-    style: 'currency',
-    currency: 'CLP',
-    maximumFractionDigits: 0,
-  }).format(value)
+export const formatPrice = (value) => {
+  const numericValue = Number(value);
+
+  if (!Number.isFinite(numericValue)) {
+    return "$0.00";
+  }
+
+  return `$${numericValue.toFixed(2)}`;
+};
