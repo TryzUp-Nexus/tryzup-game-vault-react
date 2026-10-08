@@ -2,41 +2,61 @@ import Icon from "../Icon/Icon.jsx";
 import { formatPrice } from "../../utils/formatPrice.js";
 import "./ProductCard.css";
 
-export default function ProductCard({ collection, onAdd }) {
+export default function ProductCard({ product, onAdd }) {
+  const discount =
+    Number(product.discountPercentage) > 0
+      ? `-${Math.round(product.discountPercentage)}%`
+      : null;
+
+  const productImage = product.images?.[0] || product.thumbnail;
+
   return (
     <article className="product-card">
-      <div className={`cover cover-${collection.image}`}>
-        <span className="cover-badge">{collection.badge}</span>
-        <Icon name="gamepad" className="cover-icon" size={52} />
+      <div className="product-cover">
+        {discount && <span className="cover-badge">{discount}</span>}
+
+        <img
+          src={productImage}
+          alt={product.title}
+          loading="lazy"
+        />
+
         <div className="cover-code">
-          COLLECTION / {String(collection.id).padStart(2, "0")}
+          PRODUCT / {String(product.id).padStart(3, "0")}
         </div>
       </div>
 
       <div className="product-body">
         <div className="product-meta">
-          <span>{collection.category}</span>
+          <span>{product.category}</span>
+
           <span className="rating">
-            <Icon name="star" size={14} /> {collection.rating}
+            <Icon name="star" size={14} />
+            {product.rating}
           </span>
         </div>
-        <h3>{collection.name}</h3>
-        <p>{collection.description}</p>
+
+        <h3>{product.title}</h3>
+        <p>{product.description}</p>
+
         <div className="product-info">
-          <span>{collection.games} juegos</span>
-          <span>{collection.platform}</span>
+          <span>{product.brand || "Sin marca"}</span>
+          <span>Stock: {product.stock}</span>
         </div>
+
         <div className="product-footer">
           <div>
-            <small>Precio colección</small>
-            <strong>{formatPrice(collection.price)}</strong>
+            <small>Precio referencial API</small>
+            <strong>{formatPrice(product.price)}</strong>
           </div>
+
           <button
             className="add-button"
-            onClick={() => onAdd(collection)}
-            aria-label={`Agregar ${collection.name} al carrito`}
+            onClick={() => onAdd(product)}
+            aria-label={`Agregar ${product.title} al carrito`}
           >
-            <Icon name="plus" size={18} /> Agregar
+            <Icon name="plus" size={18} />
+            Agregar
           </button>
         </div>
       </div>

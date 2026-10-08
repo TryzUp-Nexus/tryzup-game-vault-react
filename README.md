@@ -1,84 +1,139 @@
-# 🎮 TryzUp Game Vault
+# 🛍️ TryzUp Vault Store
 
-E-commerce académico de una sola página desarrollado con **React + Vite**, orientado a la venta de colecciones digitales de videojuegos.
+E-commerce académico desarrollado con **React + Vite** que consume una API pública para obtener y renderizar productos dinámicamente.
+
+Este proyecto corresponde a la segunda evolución de **TryzUp Game Vault**, conservando la arquitectura modular de la versión anterior e incorporando consumo de API, búsqueda controlada y estados de carga y error.
+
+## 🌐 Demo en vivo
+
+https://tryzup-nexus.github.io/tryzup-game-vault-react/
+
+## 🧭 Evolución del proyecto
+
+- **v1.0.0 — TryzUp Game Vault:** componentes reutilizables, props, listas, estado y catálogo simulado.
+- **v2.0.0 — TryzUp Vault Store:** consumo de productos desde DummyJSON mediante `fetch` + `useEffect`, búsqueda y manejo de estados de interfaz.
+
+Release de la primera entrega:
+
+https://github.com/TryzUp-Nexus/tryzup-game-vault-react/releases/tag/v1.0.0
 
 ## 🎯 Objetivo
 
-Aplicar componentes reutilizables, props, renderizado con `map()`, `key`, manejo de estado con `useState`, separación de responsabilidades y organización modular.
+Construir una aplicación de e-commerce en React capaz de:
 
-## ♻️ Refactorización de arquitectura
+- obtener productos desde una API;
+- renderizarlos dinámicamente;
+- buscar productos por nombre;
+- informar el estado de carga;
+- mostrar un mensaje ante errores de conexión;
+- reutilizar componentes;
+- mantener una interfaz clara y responsiva.
 
-Después de la revisión académica, el proyecto fue refactorizado para mejorar mantenibilidad y trabajo colaborativo.
+## 🔌 API utilizada
 
-- Cada componente vive en su propia carpeta.
-- Cada componente visual mantiene su propio archivo CSS.
-- Los estilos globales quedaron en `index.css`.
-- Los estilos propios de la aplicación quedaron en `App.css`.
-- `formatPrice` fue extraída a `src/utils/formatPrice.js`.
-- Se mantuvo la misma interfaz y comportamiento funcional.
+```text
+https://dummyjson.com/products
+```
 
-Detalle del cambio: `docs/architecture-refactor.md`.
+El acceso a la API se encuentra centralizado en:
+
+```text
+src/services/productApi.js
+```
+
+El ciclo de carga de datos se maneja mediante:
+
+```text
+src/hooks/useProducts.js
+```
+
+## ⚛️ Estados principales
+
+`useProducts` administra:
+
+```js
+products
+loading
+error
+```
+
+y ejecuta la consulta mediante `fetch` dentro de `useEffect`.
+
+La búsqueda utiliza además un estado controlado:
+
+```js
+const [searchTerm, setSearchTerm] = useState("");
+```
 
 ## 🧩 Componentes
 
-- `Header`: identidad, navegación y contador del carrito.
-- `Hero`: presentación principal.
-- `FilterBar`: filtros de categorías.
-- `ProductGrid`: renderizado mediante `map()`.
-- `ProductCard`: tarjeta reutilizable con props.
-- `Benefits`: características principales.
-- `Footer`: información final.
+- `Header`: logo, identidad de la tienda y contador del carrito.
+- `Hero`: presentación de la evolución v2 y estado del catálogo.
+- `SearchBar`: input controlado para buscar productos por nombre.
+- `ProductList`: renderiza los productos mediante `map()`.
+- `ProductCard`: recibe cada producto mediante props.
+- `Loader`: muestra visualmente el estado de carga.
+- `ErrorMessage`: informa errores de la API y permite reintentar.
+- `Benefits`: resume características técnicas.
+- `Footer`: información básica.
 - `Icon`: iconografía SVG reutilizable.
 
-## 📦 Datos
-
-Los productos se encuentran en `src/data/collections.js` y contienen `id`, `name`, `price`, `category` e `image`, además de datos complementarios.
-
-## 🧰 Utilidades
-
-`src/utils/formatPrice.js` centraliza el formato de precios CLP y permite reutilizar la función en futuras vistas.
-
-## 🛠️ Tecnologías
-
-React, JavaScript, Vite, HTML5, CSS3, Node.js/npm, Git, GitHub, GitHub Actions y GitHub Pages.
-
-## 📁 Estructura
+## 🗂️ Arquitectura
 
 ```text
 src/
 ├── components/
 │   ├── Benefits/
-│   │   ├── Benefits.jsx
-│   │   └── Benefits.css
-│   ├── FilterBar/
-│   │   ├── FilterBar.jsx
-│   │   └── FilterBar.css
+│   ├── ErrorMessage/
 │   ├── Footer/
-│   │   ├── Footer.jsx
-│   │   └── Footer.css
 │   ├── Header/
-│   │   ├── Header.jsx
-│   │   └── Header.css
 │   ├── Hero/
-│   │   ├── Hero.jsx
-│   │   └── Hero.css
 │   ├── Icon/
-│   │   └── Icon.jsx
+│   ├── Loader/
 │   ├── ProductCard/
-│   │   ├── ProductCard.jsx
-│   │   └── ProductCard.css
-│   └── ProductGrid/
-│       ├── ProductGrid.jsx
-│       └── ProductGrid.css
-├── data/
-│   └── collections.js
+│   ├── ProductList/
+│   └── SearchBar/
+├── hooks/
+│   └── useProducts.js
+├── services/
+│   └── productApi.js
 ├── utils/
 │   └── formatPrice.js
 ├── App.jsx
 ├── App.css
-├── main.jsx
-└── index.css
+├── index.css
+└── main.jsx
 ```
+
+## 🔄 Flujo de datos
+
+```text
+DummyJSON
+   ↓
+productApi.js
+   ↓
+useProducts.js
+   ↓
+App.jsx
+   ↓
+ProductList
+   ↓
+ProductCard
+```
+
+## 🛠️ Tecnologías utilizadas
+
+- React
+- JavaScript
+- Vite
+- HTML5
+- CSS3
+- Fetch API
+- DummyJSON
+- Git
+- GitHub
+- GitHub Actions
+- GitHub Pages
 
 ## ▶️ Ejecutar
 
@@ -95,17 +150,50 @@ npm run dev
 npm run build
 ```
 
-## 📸 Capturas
+## 🔎 Búsqueda
 
-![Vista principal](docs/screenshots/home.png)
+`SearchBar` es un input controlado. El valor se almacena en `searchTerm` y el listado se filtra por `product.title`.
 
-![Catálogo](docs/screenshots/catalogo.png)
+## ⏳ Loading
 
-## 🌐 Demo
+Mientras:
 
-https://tryzup-nexus.github.io/tryzup-game-vault-react/
+```js
+loading === true
+```
 
+se muestra el componente `Loader`.
+
+## 🚨 Error
+
+Si la consulta falla, se muestra `ErrorMessage` y el usuario puede reintentar la solicitud.
+
+## 📸 Capturas de funcionamiento
+
+### Vista general
+
+La aplicación obtiene el catálogo desde DummyJSON y muestra la cantidad de productos sincronizados.
+
+![Vista general de TryzUp Vault Store](docs/screenshots/api-home.png)
+
+### Búsqueda de productos
+
+El componente `SearchBar` utiliza un input controlado y filtra dinámicamente los productos por nombre.
+
+![Búsqueda de productos funcionando](docs/screenshots/api-search.png)
+
+### Estado sin resultados
+
+Cuando no existen coincidencias, la aplicación muestra un estado vacío sin alterar los datos originales ni romper la interfaz.
+
+![Búsqueda sin resultados](docs/screenshots/api-empty.png)
+
+### Manejo de errores
+
+Si la API no responde, la aplicación informa el problema y permite volver a intentar la solicitud.
+
+![Manejo de errores de conexión](docs/screenshots/api-error.png)
 ## 📚 Proyecto académico
 
 **Diplomado Full Stack — Módulo 2**  
-Proyecto: **TryzUp Game Vault**
+**Entrega:** E-commerce en React con consumo de API

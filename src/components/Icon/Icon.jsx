@@ -29,11 +29,7 @@ export default function Icon({ name, size = 20, className = "" }) {
     star: (
       <path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-3-5.6 3 1.1-6.2L3 9.6l6.2-.9L12 3Z" />
     ),
-    plus: (
-      <>
-        <path d="M12 5v14M5 12h14" />
-      </>
-    ),
+    plus: <path d="M12 5v14M5 12h14" />,
     sparkle: (
       <>
         <path d="m12 3 1.2 3.3L16.5 7.5l-3.3 1.2L12 12l-1.2-3.3-3.3-1.2 3.3-1.2L12 3Z" />
@@ -60,8 +56,33 @@ export default function Icon({ name, size = 20, className = "" }) {
       </>
     ),
     boxes: (
+      <path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z" />
+    ),
+    search: (
       <>
-        <path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z" />
+        <circle cx="11" cy="11" r="7" />
+        <path d="m20 20-4-4" />
+      </>
+    ),
+    x: (
+      <>
+        <path d="M6 6l12 12" />
+        <path d="M18 6 6 18" />
+      </>
+    ),
+    refresh: (
+      <>
+        <path d="M20 6v5h-5" />
+        <path d="M4 18v-5h5" />
+        <path d="M18 9a7 7 0 0 0-12-2L4 11" />
+        <path d="M6 15a7 7 0 0 0 12 2l2-4" />
+      </>
+    ),
+    wifi: (
+      <>
+        <path d="M5 9a11 11 0 0 1 14 0" />
+        <path d="M8.5 12.5a6 6 0 0 1 7 0" />
+        <path d="M12 17h.01" />
       </>
     ),
   };

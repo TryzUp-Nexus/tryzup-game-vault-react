@@ -2,9 +2,11 @@
   width: min(1180px, calc(100% - 32px));
   margin: 0 auto;
 }
+
 .catalog-section {
   padding: 64px 0 48px;
 }
+
 .section-heading {
   display: flex;
   justify-content: space-between;
@@ -12,23 +14,50 @@
   align-items: end;
   padding: 0 4px;
 }
+
 .section-kicker {
   color: var(--cyan);
   font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
   font-size: 0.72rem;
   letter-spacing: 0.17em;
 }
+
 .section-heading h2 {
   margin: 8px 0 0;
   font-size: clamp(2rem, 4vw, 3.3rem);
   letter-spacing: -0.04em;
 }
+
 .section-heading p {
-  max-width: 390px;
+  max-width: 430px;
   margin: 0;
   color: var(--muted);
   line-height: 1.6;
 }
+
+.catalog-tools {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 18px;
+  align-items: center;
+  margin: 30px 0 24px;
+}
+
+.catalog-status {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 3px;
+  padding: 9px 12px;
+  color: var(--muted);
+  font-size: 0.74rem;
+}
+
+.catalog-status strong {
+  color: #c9f9ff;
+  font-weight: 700;
+}
+
 .toast {
   position: fixed;
   right: 24px;
@@ -41,10 +70,23 @@
   background: rgba(8, 15, 22, 0.92);
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
 }
+
+@media (max-width: 720px) {
+  .catalog-tools {
+    grid-template-columns: 1fr;
+  }
+
+  .catalog-status {
+    align-items: flex-start;
+    padding: 0 2px;
+  }
+}
+
 @media (max-width: 640px) {
   .app-shell {
     width: min(100% - 20px, 1180px);
   }
+
   .section-heading {
     align-items: start;
     flex-direction: column;
