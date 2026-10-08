@@ -18,8 +18,10 @@
 .product-cover {
   position: relative;
   aspect-ratio: 16 / 10;
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 22px;
   overflow: hidden;
   border-bottom: 1px solid var(--line);
   background:
@@ -35,14 +37,20 @@
     linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
   background-size: 22px 22px;
+  pointer-events: none;
 }
 
 .product-cover img {
   position: relative;
   z-index: 1;
-  width: 86%;
-  height: 86%;
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
   object-fit: contain;
+  object-position: center;
+  margin: 0 auto;
   filter: drop-shadow(0 18px 24px rgba(0, 0, 0, 0.28));
   transition: transform 0.25s ease;
 }

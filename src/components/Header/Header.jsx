@@ -1,4 +1,5 @@
 import Icon from "../Icon/Icon.jsx";
+import tryzupLogo from "../../assets/tryzup-logo.png";
 import "./Header.css";
 
 export default function Header({ cartCount }) {
@@ -10,10 +11,10 @@ export default function Header({ cartCount }) {
         aria-label="TryzUp Vault Store - Inicio"
       >
         <span className="brand-mark">
-          <Icon name="boxes" size={21} />
+          <img src={tryzupLogo} alt="Logo TryzUp" />
         </span>
 
-        <span>
+        <span className="brand-copy">
           <strong>TRYZUP</strong>
           <small>VAULT STORE</small>
         </span>

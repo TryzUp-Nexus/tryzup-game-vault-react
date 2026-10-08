@@ -8,17 +8,15 @@ export default function ProductCard({ product, onAdd }) {
       ? `-${Math.round(product.discountPercentage)}%`
       : null;
 
+  const productImage = product.images?.[0] || product.thumbnail;
+
   return (
     <article className="product-card">
       <div className="product-cover">
-        {discount && (
-          <span className="cover-badge">
-            {discount}
-          </span>
-        )}
+        {discount && <span className="cover-badge">{discount}</span>}
 
         <img
-          src={product.thumbnail}
+          src={productImage}
           alt={product.title}
           loading="lazy"
         />
